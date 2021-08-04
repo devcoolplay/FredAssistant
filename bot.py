@@ -1,3 +1,6 @@
+# This is the Fred assistant bot in a very early stage.
+# Updates with customization process coming soon.
+
 import nltk
 from nltk.stem.lancaster import LancasterStemmer
 stemmer = LancasterStemmer()
@@ -12,10 +15,6 @@ import random
 import speech_recognition as sr
 import json
 import pickle
-
-##############   ToDo   ###############
-# let the bot recognize what the user wants to do
-# include speech  recognition
 
 speech_engine = sr.Recognizer()
 isTrained = True
