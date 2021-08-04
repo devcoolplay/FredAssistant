@@ -1,0 +1,7 @@
+numpy
+tflearn
+tensorflow
+keyboard
+pickle
+SpeechRecognition
+nltk
