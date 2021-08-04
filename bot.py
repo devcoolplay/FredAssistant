@@ -110,6 +110,8 @@ def chat():
                 elif tag == "openterminal":
                     os.system('cmd /c "start powershell.exe"')
                     print("terminal has been opened")
+                elif tag == "sleepmode":
+                    os.system('cmd /c "rundll32.exe powrprof.dll,SetSuspendState"')
                 else:
                     print("I didn't get that, try again")
 

@@ -22,6 +22,10 @@
     {"tag": "openterminal",
      "patterns": ["öffne terminal", "terminal", "gib mir ein terminal fenster", "ich brauche ein terminal fenster", "öffne powershell", "Ich möchte das terminal öffnen", "öffne cmd", "cmd", "powershell", "terminal", "open the terminal", "open powershell", "open the cmd", "open a terminal window", "öffne ein terminal fenster", "öffne ein powershell fenster", "konsole", "ich brauche die konsole", "open the console", "öffne die konsole"],
      "context_set": ""
+    },
+    {"tag": "sleepmode",
+     "patterns": ["geh schlafen", "energie sparen", "go sleep", "ruhezustand", "gehe in den ruhezustand", "sleep mode", "save power", "set the computer to sleep mode", "setze den pc in den ruhezustand", "lasse den pc schlafen", "go to bed"],
+     "context_set": ""
     }
 ]
 }
