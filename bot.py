@@ -18,6 +18,7 @@ import pickle
 
 speech_engine = sr.Recognizer()
 isTrained = True
+dataChanged = False
 
 current = set()
 pressed = False
@@ -29,7 +30,7 @@ def setPressed():
 
 keyboard.add_hotkey('alt + s', setPressed)
 
-with open("intents.json") as file:
+with open("intents.json", "r") as file:
     data = json.load(file)
 
 try:
@@ -68,6 +69,8 @@ def bag_of_words(s, words):
 def chat():
     print("Start talking with Fred! (type \"quit\" to stop)")
     global pressed
+    previousTag = "nothing"
+    lastSaid = "nothing"
     while True:
         if pressed:
             inp = "nothing"
@@ -81,42 +84,63 @@ def chat():
 
                     inp = text
                     pressed = False
+
+                    results = model.predict([bag_of_words(inp, words)])[0]
+                    results_index = numpy.argmax(results)
+                    tag = labels[results_index]
+                    
+                    save = True
+
+                    if results[results_index] > 0.7:
+                        if tag == "openbrowser":
+                            os.system('cmd /c "start brave.exe"')
+                            print("Brave browser has been started")
+                        elif tag == "waswrong":
+                            save = False
+                        elif tag == "openspotify":
+                            os.system('cmd /c "start spotify.exe"')
+                            print("Spotify has been opened")
+                        elif tag == "openfiles":
+                            os.system('cmd /c "start explorer.exe"')
+                            print("explorer has been opened")
+                        elif tag == "openvscode":
+                            os.system('cmd /c "code"')
+                            print("visual studio code has been opened")
+                        elif tag == "quit":
+                            break
+                        elif tag == "openterminal":
+                            os.system('cmd /c "start powershell.exe"')
+                            print("terminal has been opened")
+                        elif tag == "sleepmode":
+                            os.system('cmd /k "rundll32.exe powrprof.dll,SetSuspendState"')
+                        else:
+                            print("I didn't get that, try again")
+                            save = False
+
+                    try:
+                        if save == True and data:
+                            if lastSaid in data["intents"][(([x for x in range(len(data["intents"])) if data["intents"][x]["tag"] == previousTag])[0])]["patterns"]:
+                                print("data already saved")
+                            else:
+                                data["intents"][([x for x in range(len(data["intents"])) if data["intents"][x]["tag"] == previousTag])[0]]["patterns"].append(lastSaid)
+                                global dataChanged
+                                dataChanged = True
+                        else:
+                            print("data not saved")
+                    except:
+                        print("Couldn't save data. Maybe the program just started")
+                    
+                    previousTag = tag
+                    lastSaid = inp
             except:
-                print("something went wrong during speech recognition")
-
-            #inp = input("You: ")
-            #if inp.lower() == "quit":
-            #    print("Fred: Bye!")
-            #    break
-
-
-            results = model.predict([bag_of_words(inp, words)])[0]
-            results_index = numpy.argmax(results)
-            tag = labels[results_index]
-            
-            if results[results_index] > 0.7:
-                if tag == "openbrowser":
-                    os.system('cmd /c "start brave.exe"')
-                    print("Brave browser has been started")
-                elif tag == "openspotify":
-                    os.system('cmd /c "start spotify.exe"')
-                    print("Spotify has been opened")
-                elif tag == "openfiles":
-                    os.system('cmd /c "start explorer.exe"')
-                    print("explorer has been opened")
-                elif tag == "openvscode":
-                    os.system('cmd /c "code"')
-                    print("visual studio code has been opened")
-                elif tag == "openterminal":
-                    os.system('cmd /c "start powershell.exe"')
-                    print("terminal has been opened")
-                elif tag == "sleepmode":
-                    os.system('cmd /c "rundll32.exe powrprof.dll,SetSuspendState"')
-                else:
-                    print("I didn't get that, try again")
+                print("I didn't hear you, try again!")
+                pressed = False
+    
+    if dataChanged:
+        with open("intents.json", "w") as file:
+            json.dump(data, file)
 
 chat()
-
 
 
 
