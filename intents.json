@@ -1,6 +1,22 @@
 {
     "intents": [
         {
+            "tag": "trainai",
+            "patterns": [
+                "train",
+                "train the ai",
+                "practice",
+                "trainiere die ki",
+                "trainieren",
+                "training",
+                "train the algorithm",
+                "üben",
+                "die ki muss üben",
+                "künstliche intelligenz trainieren"
+            ],
+            "context_set": ""
+        },
+        {
             "tag": "waswrong",
             "patterns": [
                 "falsch",
@@ -84,6 +100,24 @@
             "context_set": ""
         },
         {
+            "tag": "opennotepad",
+            "patterns": [
+                "Ich möchte schreiben",
+                "öffne notepad",
+                "starte das notepad",
+                "notepad",
+                "notizen",
+                "open notepad",
+                "start notepad",
+                "i need to write something down",
+                "let me take a note",
+                "note",
+                "i need to taka a note",
+                "open the notepad"
+            ],
+            "context_set": ""
+        },
+        {
             "tag": "currenttime",
             "patterns": [
                 "wie viel uhr is es",
@@ -163,7 +197,8 @@
                 "konsole",
                 "ich brauche die konsole",
                 "open the console",
-                "\u00c3\u00b6ffne die konsole"
+                "\u00c3\u00b6ffne die konsole",
+                "Terminal \u00f6ffnen"
             ],
             "context_set": ""
         },

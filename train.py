@@ -2,12 +2,27 @@ import nltk
 from nltk.stem.lancaster import LancasterStemmer
 stemmer = LancasterStemmer()
 
+import sys
 import numpy
 import tflearn
+import os
 import tensorflow
 import random
 import json
 import pickle
+
+train = "False"
+
+if len(sys.argv) == 2:
+    train = sys.argv[1]
+elif len(sys.argv) == 1:
+    pass
+elif train != "-s":
+    print("Invalid arguments!\nValid arguments are:\n   -s     to start bot after training")
+    exit(1)
+else:
+    print("Invalid arguments!\nValid arguments are:\n   -s     to start bot after training")
+    exit(1)
 
 with open("intents.json") as file:
     data = json.load(file)
@@ -70,3 +85,6 @@ model = tflearn.DNN(net)
 
 model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
 model.save("model.tflearn")
+
+if train == "-s":
+    os.system('cmd /c "py bot.py"')

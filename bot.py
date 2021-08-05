@@ -21,12 +21,12 @@ isTrained = True
 dataChanged = False
 
 current = set()
+train = False
 pressed = False
 
 def setPressed():
     global pressed
     pressed = True
-    print("Hotkey works")
 
 keyboard.add_hotkey('alt + s', setPressed)
 
@@ -113,6 +113,12 @@ def chat():
                             print("terminal has been opened")
                         elif tag == "sleepmode":
                             os.system('cmd /k "rundll32.exe powrprof.dll,SetSuspendState"')
+                        elif tag == "opennotepad":
+                            os.system('cmd /c "start notepad++.exe"')
+                        elif tag == "trainai":
+                            global train
+                            train = True
+                            break
                         else:
                             print("I didn't get that, try again")
                             save = False
@@ -141,6 +147,9 @@ def chat():
             json.dump(data, file)
 
 chat()
+
+if train:
+    os.system('cmd /k "py train.py -s"')
 
 
 
