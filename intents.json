@@ -1,1 +1,247 @@
-{"intents": [{"tag": "trainai", "patterns": ["train", "train the ai", "practice", "trainiere die ki", "trainieren", "training", "train the algorithm", "\u00c3\u00bcben", "die ki muss \u00c3\u00bcben", "k\u00c3\u00bcnstliche intelligenz trainieren"], "context_set": ""}, {"tag": "waswrong", "patterns": ["falsch", "das wollte ich nicht", "das war das falsche", "das hat nicht funktioniert", "das war nicht gut", "schlecht", "leider falsch", "wrong", "i did not mean that", "that was wrong", "that was the wrong thing", "you did the wrong thing", "that was bad", "bad", "incorrect", "das war falsch", "ich brauche ein CMD-Fenster"], "context_set": ""}, {"tag": "quit", "patterns": ["quit", "stop", "stopp", "programm beenden", "end program", "stop application", "beenden"], "context_set": ""}, {"tag": "openbrowser", "patterns": ["ich m\u00c3\u00b6chte mich informieren", "browserfenster", "ich brauche ein browserfenster", "\u00c3\u00b6ffne ein browser fenster", "\u00c3\u00b6ffne den browser", "open the browser", "ich muss etwas googeln", "i wanna google somthing", "Ich muss etwas nachschauen", "i need to look something up", "Ich muss nachschlagen", "i need to do some research", "start den browser", "start the browser", "browser", "google", "google", "i need to look something up", "nachschlagen", "research", "Browser nachschauen", "Browserfenster \u00f6ffnen", "\u00f6ffne mir einen Browser", "starte den Browser"], "context_set": ""}, {"tag": "openspotify", "patterns": ["Ich m\u00c3\u00b6chte musik h\u00c3\u00b6ren", "i want to listen to some music", "\u00c3\u00b6ffne spotify", "open spotify", "starte spotify", "start spotify", "Gib mir etwas zum anh\u00c3\u00b6ren", "give me something to listen to", "musik", "music", "ich m\u00c3\u00b6chte lieder h\u00c3\u00b6ren", "i want to hear some songs", "spiele lieder", "play some songs", "play songs", "musik h\u00f6ren"], "context_set": ""}, {"tag": "opennotepad", "patterns": ["Ich m\u00c3\u00b6chte schreiben", "\u00c3\u00b6ffne notepad", "starte das notepad", "notepad", "notizen", "open notepad", "start notepad", "i need to write something down", "let me take a note", "note", "i need to taka a note", "open the notepad"], "context_set": ""}, {"tag": "currenttime", "patterns": ["wie viel uhr is es", "what time is it", "was ist die uhrzeit", "what is the time", "sag mir die zeit", "tell me the time", "wie viel uhr haben wir es", "what time do we have", "ich brauche die zeit", "I need the time please"], "context_set": ""}, {"tag": "openfiles", "patterns": ["zeig mir meine dateien", "let me see my files", "dateien", "files", "\u00c3\u00b6ffne den explorer", "open the explorer", "starte den explorer", "start the explorer", "ich muss ein paar dateien kopieren", "i need to copy some files", "ich muss ein paar dateien l\u00c3\u00b6schen", "i need to delete some files", "zeig mir meine Dateien", "show me my files", "zeig mir meine ordner", "show me my folders"], "context_set": ""}, {"tag": "openvscode", "patterns": ["\u00c3\u00b6nne vs code", "\u00c3\u00b6ffne visual studio code", "Ich m\u00c3\u00b6chte programmieren", "Ich will coden", "visual studio code", "open vs code", "open visual studio code", "I need to code", "coding", "code", "open code", "start code", "vscode", "give me vscode"], "context_set": ""}, {"tag": "shutdown", "patterns": ["fahre de pc herunter", "pc runterfahren", "pc aus", "aushalten", "schalte den pc aus", "shutdown", "turn off the computer", "schalte den pc aus"], "context_set": ""}, {"tag": "openterminal", "patterns": ["\u00c3\u00b6ffne terminal", "terminal", "gib mir ein terminal fenster", "ich brauche ein terminal fenster", "\u00c3\u00b6ffne powershell", "Ich m\u00c3\u00b6chte das terminal \u00c3\u00b6ffnen", "\u00c3\u00b6ffne cmd", "cmd", "powershell", "terminal", "open the terminal", "open powershell", "open the cmd", "open a terminal window", "\u00c3\u00b6ffne ein terminal fenster", "\u00c3\u00b6ffne ein powershell fenster", "konsole", "ich brauche die konsole", "open the console", "\u00c3\u00b6ffne die konsole", "Terminal \u00f6ffnen", "CMD \u00f6ffnen"], "context_set": ""}, {"tag": "sleepmode", "patterns": ["geh schlafen", "energie sparen", "go sleep", "ruhezustand", "ruhemodus", "geschlafen", "gehe in den ruhezustand", "sleep mode", "energieparmodus", "energiesparen", "save power", "set the computer to sleep mode", "setze den pc in den ruhezustand", "lasse den pc schlafen", "go to bed"], "context_set": ""}]}
+{
+    "intents": [
+        {
+            "tag": "trainai",
+            "patterns": [
+                "train",
+                "train the ai",
+                "practice",
+                "trainiere die ki",
+                "trainieren",
+                "training",
+                "train the algorithm",
+                "\u00c3\u00bcben",
+                "die ki muss \u00c3\u00bcben",
+                "k\u00c3\u00bcnstliche intelligenz trainieren"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "waswrong",
+            "patterns": [
+                "falsch",
+                "das wollte ich nicht",
+                "das war das falsche",
+                "das hat nicht funktioniert",
+                "das war nicht gut",
+                "schlecht",
+                "leider falsch",
+                "wrong",
+                "i did not mean that",
+                "that was wrong",
+                "that was the wrong thing",
+                "you did the wrong thing",
+                "that was bad",
+                "bad",
+                "incorrect",
+                "das war falsch",
+                "ich brauche ein CMD-Fenster"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "quit",
+            "patterns": [
+                "quit",
+                "stop",
+                "stopp",
+                "programm beenden",
+                "end program",
+                "stop application",
+                "beenden"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "openbrowser",
+            "patterns": [
+                "ich m\u00c3\u00b6chte mich informieren",
+                "browserfenster",
+                "ich brauche ein browserfenster",
+                "\u00c3\u00b6ffne ein browser fenster",
+                "\u00c3\u00b6ffne den browser",
+                "open the browser",
+                "ich muss etwas googeln",
+                "i wanna google somthing",
+                "Ich muss etwas nachschauen",
+                "i need to look something up",
+                "Ich muss nachschlagen",
+                "i need to do some research",
+                "start den browser",
+                "start the browser",
+                "browser",
+                "google",
+                "google",
+                "i need to look something up",
+                "nachschlagen",
+                "research",
+                "Browser nachschauen",
+                "Browserfenster \u00f6ffnen",
+                "\u00f6ffne mir einen Browser",
+                "starte den Browser"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "openspotify",
+            "patterns": [
+                "Ich m\u00c3\u00b6chte musik h\u00c3\u00b6ren",
+                "i want to listen to some music",
+                "\u00c3\u00b6ffne spotify",
+                "open spotify",
+                "starte spotify",
+                "start spotify",
+                "Gib mir etwas zum anh\u00c3\u00b6ren",
+                "give me something to listen to",
+                "musik",
+                "music",
+                "ich m\u00c3\u00b6chte lieder h\u00c3\u00b6ren",
+                "i want to hear some songs",
+                "spiele lieder",
+                "play some songs",
+                "play songs",
+                "musik h\u00f6ren"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "opennotepad",
+            "patterns": [
+                "Ich m\u00c3\u00b6chte schreiben",
+                "\u00c3\u00b6ffne notepad",
+                "starte das notepad",
+                "notepad",
+                "notizen",
+                "open notepad",
+                "start notepad",
+                "i need to write something down",
+                "let me take a note",
+                "note",
+                "i need to taka a note",
+                "open the notepad"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "currenttime",
+            "patterns": [
+                "wie viel uhr is es",
+                "what time is it",
+                "was ist die uhrzeit",
+                "what is the time",
+                "sag mir die zeit",
+                "tell me the time",
+                "wie viel uhr haben wir es",
+                "what time do we have",
+                "ich brauche die zeit",
+                "I need the time please"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "openfiles",
+            "patterns": [
+                "zeig mir meine dateien",
+                "let me see my files",
+                "dateien",
+                "files",
+                "\u00c3\u00b6ffne den explorer",
+                "open the explorer",
+                "starte den explorer",
+                "start the explorer",
+                "ich muss ein paar dateien kopieren",
+                "i need to copy some files",
+                "ich muss ein paar dateien l\u00c3\u00b6schen",
+                "i need to delete some files",
+                "zeig mir meine Dateien",
+                "show me my files",
+                "zeig mir meine ordner",
+                "show me my folders"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "openvscode",
+            "patterns": [
+                "\u00c3\u00b6nne vs code",
+                "\u00c3\u00b6ffne visual studio code",
+                "Ich m\u00c3\u00b6chte programmieren",
+                "Ich will coden",
+                "visual studio code",
+                "open vs code",
+                "open visual studio code",
+                "I need to code",
+                "coding",
+                "code",
+                "open code",
+                "start code",
+                "vscode",
+                "give me vscode"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "shutdown",
+            "patterns": [
+                "fahre de pc herunter",
+                "pc runterfahren",
+                "pc aus",
+                "aushalten",
+                "schalte den pc aus",
+                "shutdown",
+                "turn off the computer",
+                "schalte den pc aus"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "openterminal",
+            "patterns": [
+                "\u00c3\u00b6ffne terminal",
+                "terminal",
+                "gib mir ein terminal fenster",
+                "ich brauche ein terminal fenster",
+                "\u00c3\u00b6ffne powershell",
+                "Ich m\u00c3\u00b6chte das terminal \u00c3\u00b6ffnen",
+                "\u00c3\u00b6ffne cmd",
+                "cmd",
+                "powershell",
+                "terminal",
+                "open the terminal",
+                "open powershell",
+                "open the cmd",
+                "open a terminal window",
+                "\u00c3\u00b6ffne ein terminal fenster",
+                "\u00c3\u00b6ffne ein powershell fenster",
+                "konsole",
+                "ich brauche die konsole",
+                "open the console",
+                "\u00c3\u00b6ffne die konsole",
+                "Terminal \u00f6ffnen",
+                "CMD \u00f6ffnen"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "sleepmode",
+            "patterns": [
+                "geh schlafen",
+                "energie sparen",
+                "go sleep",
+                "ruhezustand",
+                "ruhemodus",
+                "geschlafen",
+                "gehe in den ruhezustand",
+                "sleep mode",
+                "energieparmodus",
+                "energiesparen",
+                "save power",
+                "set the computer to sleep mode",
+                "setze den pc in den ruhezustand",
+                "lasse den pc schlafen",
+                "go to bed"
+            ],
+            "context_set": ""
+        }
+    ]
+}
