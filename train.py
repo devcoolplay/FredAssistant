@@ -18,13 +18,17 @@ startBotWhenFinished = "False"
 
 # check wether the arguments are correct
 if len(sys.argv) == 2:
-    trstartBotWhenFinishedain = sys.argv[1]
+    startBotWhenFinished = sys.argv[1]
 elif len(sys.argv) == 1:
     pass
 elif startBotWhenFinished != "-s":
     print("Invalid arguments!\nValid arguments are:\n   -s     to start bot after training")
     exit(1)
 else:
+    print("Invalid arguments!\nValid arguments are:\n   -s     to start bot after training")
+    exit(1)
+
+if startBotWhenFinished != "-s":
     print("Invalid arguments!\nValid arguments are:\n   -s     to start bot after training")
     exit(1)
 

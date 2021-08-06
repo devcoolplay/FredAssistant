@@ -10,8 +10,6 @@ import numpy
 import os
 import tflearn
 import keyboard
-import tensorflow
-import random
 import speech_recognition as sr
 import json
 import pickle
@@ -28,6 +26,10 @@ train = False
 # init variables for hotkey detection
 current = set()
 pressed = False
+
+# init vars to define an exit command
+executeExitCommand = False
+exitCommand = "nothing"
 
 # set the pressed variable to true
 def setPressed():
@@ -79,6 +81,8 @@ def bag_of_words(s, words):
 
 # start to understand what the user wants to happen, when hotkey is pressed 
 def main():
+    global executeExitCommand
+    global exitCommand
     # tell the user that the bot is ready
     print("Start talking with Fred! (type \"quit\" to stop)")
     # init vars
@@ -119,6 +123,11 @@ def main():
                         if tag == "openbrowser":
                             os.system('cmd /c "start brave.exe"')
                             print("Brave browser has been started")
+                        elif tag == "shutdown":
+                            # set exit command and break out of loop
+                            executeExitCommand = True
+                            exitCommand = 'cmd /k "shutdown -s"'
+                            break
                         elif tag == "waswrong":
                             save = False
                         elif tag == "openspotify":
@@ -136,14 +145,16 @@ def main():
                             os.system('cmd /c "start powershell.exe"')
                             print("terminal has been opened")
                         elif tag == "sleepmode":
-                            os.system('cmd /k "rundll32.exe powrprof.dll,SetSuspendState"')
+                            executeExitCommand = True
+                            exitCommand = 'cmd /k "rundll32.exe powrprof.dll,SetSuspendState"'
                         elif tag == "opennotepad":
                             os.system('cmd /c "start notepad++.exe"')
                             print("notepad++ has been started")
                         elif tag == "trainai":
                             print("AI will start to train and get back when training is done")
-                            global train
-                            train = True
+                            # set exit command and break out of loop
+                            executeExitCommand = True
+                            exitCommand = 'cmd /k "py train.py -s"'
                             break
                         else:
                             print("Somehing that shouldn't happen just happened. Quitting . . .")
@@ -187,9 +198,11 @@ def main():
 # start the whole process
 main()
 
-if train:
-    # start training process and tell it that it should start the bot after it's done again
-    os.system('cmd /k "py train.py -s"')
+
+if executeExitCommand:
+    executeExitCommand = False
+    # execute exit command
+    os.system(exitCommand)
 
 
 
