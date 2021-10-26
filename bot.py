@@ -5,17 +5,31 @@
 import nltk
 from nltk.stem.lancaster import LancasterStemmer
 stemmer = LancasterStemmer()
-
+from tqdm import tqdm
 import numpy
 import os
 import tflearn
+import random
 import keyboard
 import speech_recognition as sr
 import json
+import pyttsx3
 import pickle
 
+# progress bar
+pbar = tqdm(total=100)
+
+# initialize text-to-speech engine
+tts = pyttsx3.init()
+pbar.update(10)
+voices = tts.getProperty("voices")
+pbar.update(10)
+tts.setProperty("voice", "german+f3")
+pbar.update(10)
+#tts.setProperty("gender", "male")
 # initialize the speech recognizer engine
 speech_engine = sr.Recognizer()
+pbar.update(10)
 # set a variable to check wether the bot is already trained
 isTrained = True
 # init variable to check wether the training data got changed by the bot
@@ -31,6 +45,11 @@ pressed = False
 executeExitCommand = False
 exitCommand = "nothing"
 
+# function for saying something
+def say(text):
+    tts.say(text)
+    tts.runAndWait()
+
 # set the pressed variable to true
 def setPressed():
     global pressed
@@ -42,6 +61,16 @@ keyboard.add_hotkey('alt + s', setPressed)
 # open the intents.json file in read mode to read the data
 with open("intents.json", "r") as file:
     data = json.load(file)
+pbar.update(10)
+
+# function for responding to intents
+def respond(tag):
+    global data
+    for intent in data["intents"]:
+        if intent["tag"] == tag:
+            say(intent["responses"][random.randint(0, len(intent["responses"]) - 1)])
+            pass
+
 
 # try to open training data. if training data exists go on, and if not close the program with an error message
 try:
@@ -50,20 +79,28 @@ try:
 
 except:
     isTrained = False
+pbar.update(10)
 
 # initialize nural network
 net = tflearn.input_data(shape=[None, len(training[0])])
+pbar.update(5)
 net = tflearn.fully_connected(net, 8)
+pbar.update(5)
 net = tflearn.fully_connected(net, 8)
+pbar.update(5)
 net = tflearn.fully_connected(net, len(output[0]), activation="softmax")
+pbar.update(5)
 net = tflearn.regression(net)
+pbar.update(5)
 model = tflearn.DNN(net)
+pbar.update(15)
 
 if isTrained: 
     # load the training data
     model.load("model.tflearn")
 else:
     print("No trained model found!")
+pbar.close()
 
 # compare input words with words stored in data
 def bag_of_words(s, words):
@@ -98,12 +135,14 @@ def main():
             # try to listen to the user and understand the user
             try:
                 # start the mic and listen to what the user is saying
+                print("1")
                 with sr.Microphone() as micro:
                     print("Recording...")
                     audio = speech_engine.record(micro, duration=3)
                     print("Recognition...")
                     text = speech_engine.recognize_google(audio, language="de-DE")
                     print(text)
+                    print("2")
 
                     inp = text
                     # reset pressed, so it won't start this process for no reason
@@ -116,51 +155,66 @@ def main():
                     
                     # init a variable to tell the program wether a new expression should be saved in the intents.json file
                     save = True
-
+                    print("result" + str(results))
                     # check wether the ai is confident enough with its interpretations
                     if results[results_index] > 0.7:
                         # execute the things that the ai understood
                         if tag == "openbrowser":
                             os.system('cmd /c "start brave.exe"')
                             print("Brave browser has been started")
+                            respond(tag)
                         elif tag == "shutdown":
                             # set exit command and break out of loop
                             executeExitCommand = True
                             exitCommand = 'cmd /k "shutdown -s"'
+                            respond(tag)
                             break
                         elif tag == "waswrong":
                             save = False
+                            respond(tag)
                         elif tag == "openspotify":
+                            respond(tag)
                             os.system('cmd /c "start spotify.exe"')
                             print("Spotify has been opened")
                         elif tag == "openfiles":
+                            respond(tag)
                             os.system('cmd /c "start explorer.exe"')
                             print("explorer has been opened")
                         elif tag == "openvscode":
+                            respond(tag)
                             os.system('cmd /c "code"')
                             print("visual studio code has been opened")
                         elif tag == "quit":
+                            respond(tag)
                             break
                         elif tag == "openterminal":
+                            respond(tag)
                             os.system('cmd /c "start powershell.exe"')
                             print("terminal has been opened")
                         elif tag == "sleepmode":
+                            respond(tag)
                             executeExitCommand = True
                             exitCommand = 'cmd /k "rundll32.exe powrprof.dll,SetSuspendState"'
                         elif tag == "opennotepad":
+                            respond(tag)
                             os.system('cmd /c "start notepad++.exe"')
                             print("notepad++ has been started")
                         elif tag == "trainai":
+                            respond(tag)
                             print("AI will start to train and get back when training is done")
                             # set exit command and break out of loop
                             executeExitCommand = True
                             exitCommand = 'cmd /k "py train.py -s"'
                             break
+                        elif tag == "sortdownloads":
+                            os.system('cmd /c "cd G:\Programmierung\Python\downloadsAutomation && py main.py \"C:/Users/zink2/Downloads\""')
+                            respond(tag)
                         else:
                             print("Somehing that shouldn't happen just happened. Quitting . . .")
                             exit(1)
                     else:
                         # print an error message when the ai wasn't confident enough
+                        say("Sorry, Das habe ich nicht verstanden")
                         print("I didn't get that, try again")
                         save = False
 
@@ -185,9 +239,11 @@ def main():
                     # update the vars
                     previousTag = tag
                     lastSaid = inp
-            except:
+            except Exception as e:
+                print(e)
+                say("Ich habe dich nicht verstanden. Sage das bitte nocheinmal")
                 # speech recognition didn't understand the user acoustically
-                print("I didn't hear you, try again!")
+                print("I didn't hear you, try again: ")
                 pressed = False
     
     if dataChanged:

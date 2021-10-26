@@ -14,7 +14,8 @@
                 "die ki muss \u00c3\u00bcben",
                 "k\u00c3\u00bcnstliche intelligenz trainieren"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
         },
         {
             "tag": "waswrong",
@@ -37,7 +38,8 @@
                 "das war falsch",
                 "ich brauche ein CMD-Fenster"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
         },
         {
             "tag": "quit",
@@ -50,7 +52,8 @@
                 "stop application",
                 "beenden"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
         },
         {
             "tag": "openbrowser",
@@ -78,9 +81,11 @@
                 "Browser nachschauen",
                 "Browserfenster \u00f6ffnen",
                 "\u00f6ffne mir einen Browser",
-                "starte den Browser"
+                "starte den Browser",
+                "\u00f6ffne den Browser"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
         },
         {
             "tag": "openspotify",
@@ -100,9 +105,15 @@
                 "spiele lieder",
                 "play some songs",
                 "play songs",
-                "musik h\u00f6ren"
+                "musik h\u00f6ren",
+                "Musik"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": [
+                "wird gemacht",
+                "spotify wird geöffnet",
+                "ich öffne spotify"
+            ]
         },
         {
             "tag": "opennotepad",
@@ -118,9 +129,11 @@
                 "let me take a note",
                 "note",
                 "i need to taka a note",
-                "open the notepad"
+                "open the notepad",
+                "Pfalz"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
         },
         {
             "tag": "currenttime",
@@ -136,7 +149,8 @@
                 "ich brauche die zeit",
                 "I need the time please"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
         },
         {
             "tag": "openfiles",
@@ -156,9 +170,11 @@
                 "zeig mir meine Dateien",
                 "show me my files",
                 "zeig mir meine ordner",
-                "show me my folders"
+                "show me my folders",
+                "Dateien"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
         },
         {
             "tag": "openvscode",
@@ -178,7 +194,8 @@
                 "vscode",
                 "give me vscode"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
         },
         {
             "tag": "shutdown",
@@ -192,7 +209,8 @@
                 "turn off the computer",
                 "schalte den pc aus"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
         },
         {
             "tag": "openterminal",
@@ -220,7 +238,8 @@
                 "Terminal \u00f6ffnen",
                 "CMD \u00f6ffnen"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
         },
         {
             "tag": "sleepmode",
@@ -241,7 +260,26 @@
                 "lasse den pc schlafen",
                 "go to bed"
             ],
-            "context_set": ""
+            "context_set": "",
+            "responses": []
+        },
+        {
+            "tag": "sortdownloads",
+            "patterns": [
+                "sortiere die downloads",
+                "downloads sortieren",
+                "downloads organisieren",
+                "downloads verwalten",
+                "dateien sortieren",
+                "organisiere meine downloads",
+                "organisiere die dateien",
+                "organisiere meine downlaods"
+            ],
+            "context_set": "",
+            "responses": [
+                "Wird gemacht",
+                "Downloads werden sortiert"
+            ]
         }
     ]
 }
